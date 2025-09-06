@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GREEN EARTH</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+  </head>
+  <body>
+    <header class="bg-green-700 text-white shadow-lg sticky top-0 z-50">
+      <div class="w-11/12 mx-auto flex justify-between items-center p-4">
+        <h1 class="text-2xl font-bold">🌱 Green Earth</h1>
+
+        <nav class="space-x-4 mx-auto hidden md:flex sm:flex-col lg:flex-row">
+          <a href="#about" class="nav-link hover:underline">About</a>
+          <a href="#gallery" class="nav-link hover:underline">Gallery</a>
+          <a href="#donate" class="nav-link hover:underline">Plant a Tree</a>
+        </nav>
+
+        <button
+          id="mobileSearchToggle"
+          class="md:hidden text-white hover:text-green-200 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="font-bold">
+          <button class="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-6 py-3 rounded-full shadow-lg transition">
+            Plant a Tree
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobileSearchBar"
+        class="md:hidden bg-green-600 px-4 pb-4 hidden"
+      >
+        <div class="relative">
+          <input
+            type="text"
+            id="mobileSearchInput"
+            placeholder="Search trees..."
+            class="w-full pl-10 pr-4 py-2 text-gray-800 rounded-full border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+          />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+            <svg
+              class="w-4 h-4 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero-section text-green-900 flex items-center justify-center">
+      <div class="hero-content text-center flex flex-col items-center justify-center">
+        <h1 class="font-extrabold text-5xl md:text-6xl mb-4">
+          Plant a Tree, Grow a Future
+        </h1>
+        <p class="text-xl md:text-2xl mb-8">
+          Join us in our mission to make the world a greener place.
+        </p>
+        <button class="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-8 py-4 rounded-full shadow-xl transition transform hover:scale-105">
+          Get Involved
+        </button>
+      </div>
+      <img src="assets/hero-leaf1.png" alt="Leaf 1" class="hero-leaf leaf-left-bottom" />
+      <img src="assets/hero-leaf2.png" alt="Leaf 2" class="hero-leaf leaf-right-bottom" />
+    </section>
+    <section id="spinner" class="flex justify-center items-center py-10 hidden">
+      <span class="loading loading-dots loading-xl"></span>
+    </section>
+
+    <main class="min-h-screen bg-[#F0FDF480] flex my-14">
+  <section id="category-Container" class="bg-[#F0FDF480] w-52"></section>
+  <div class="flex flex-col flex-grow">
+    <section
+      id="plant-Container"
+      class="bg-[#F0FDF480] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4"
+    ></section>
+    <div id="load-more-container" class="w-full text-center mt-6"></div>
+  </div>
+  <section id="cart-section" class="bg-white p-4 rounded-xl shadow-md w-[250px]">
+    <h2 class="text-lg font-bold mb-2">Your Cart</h2>
+    <div id="cart-container"></div>
+  </section>
+</main>
+
+    <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div id="details-container" class="space-y-5"></div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <section id="about" class="max-w-7xl mx-auto py-16 px-6">
+      <h3 class="text-3xl font-bold text-center text-green-800 mb-8">
+        About the Campaign
+      </h3>
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <img
+          class="rounded-lg shadow-lg mr-6"
+          src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+          alt="Tree Planting"
+        />
+        <div>
+          <p class="text-lg">
+            Green Earth is a global tree plantation initiative dedicated to
+            fighting climate change. Since our start, we've planted over 500,000
+            trees worldwide. By joining our campaign, you help restore forests,
+            create habitats for wildlife, and combat global warming.
+          </p>
+
+          <ul class="list-disc pl-5 text-lg mt-3">
+            <li>Restoration of natural habitats</li>
+            <li>Improvement of air quality</li>
+            <li>Support for local communities</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="bg-green-100 py-16 px-6">
+      <h3 class="text-3xl font-bold text-center text-green-800 mb-12">
+        Our Impact
+      </h3>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+        <div
+          class="bg-white p-8 rounded-xl shadow-lg hover:bg-green-200 hover:scale-105 transition-transform"
+        >
+          <p class="text-4xl font-bold text-green-700">500K+</p>
+          <p class="mt-2">Trees Planted</p>
+        </div>
+        <div
+          class="bg-white p-8 rounded-xl shadow-lg hover:bg-green-200 hover:scale-105 transition-transform"
+        >
+          <p class="text-4xl font-bold text-green-700">120+</p>
+          <p class="mt-2">Communities Involved</p>
+        </div>
+        <div
+          class="bg-white p-8 rounded-xl shadow-lg hover:bg-green-200 hover:scale-105 transition-transform"
+        >
+          <p class="text-4xl font-bold text-green-700">30+</p>
+          <p class="mt-2">Countries Reached</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" class="bg-green-800 text-white py-16 px-6">
+      <h3 class="text-3xl font-bold text-center mb-8">Plant a Tree Today</h3>
+      <form
+        id="treeForm"
+        class="max-w-lg mx-auto bg-green-700 p-8 rounded-xl shadow-lg space-y-4"
+      >
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="w-full p-3 rounded bg-white text-gray-800"
+          required
+        />
+        <input
+          type="email"
+          placeholder="Your Email"
+          class="w-full p-3 rounded bg-white text-gray-800"
+          required
+        />
+        <select class="w-full p-3 rounded bg-white text-gray-800" required>
+          <option value="">Number of Trees</option>
+          <option value="1">1 Tree - $5</option>
+          <option value="5">5 Trees - $25</option>
+          <option value="10">10 Trees - $50</option>
+        </select>
+        <button
+          type="submit"
+          class="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold px-6 py-3 rounded-full w-full"
+        >
+          Donate Now
+        </button>
+      </form>
+    </section>
+
+    <footer class="bg-green-900 text-green-100 text-center py-6">
+      <p>&copy; 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>
