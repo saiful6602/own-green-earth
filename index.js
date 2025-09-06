@@ -76,16 +76,16 @@ const loadSinglePlant = async (plantId) => {
 const displayPlantDetails = (plant) => {
   const modalContent = document.getElementById("details-container");
   modalContent.innerHTML = `
-            <h2 class="text-2xl font-bold mb-4">${plant.name}</h2>
-            <img src="${plant.image}" alt="${
+            <h2 class="text-2xl font-bold mb-4">${plant.name}</h2>
+            <img src="${plant.image}" alt="${
     plant.name
   }" class="w-full h-64 object-cover mb-4 rounded-lg"/>
-            <p class="mb-2"><strong>Category:</strong> ${plant.category}</p>
-            <p class="mb-2"><strong>Price:</strong> ৳${plant.price}</p>
-            <p class="mb-2"><strong>Description:</strong> ${
+            <p class="mb-2"><strong>Category:</strong> ${plant.category}</p>
+            <p class="mb-2"><strong>Price:</strong> ৳${plant.price}</p>
+            <p class="mb-2"><strong>Description:</strong> ${
     plant.description || "No description available."
   }</p>
-        `;
+        `;
   // Show the modal
   document.getElementById("plant_modal").showModal();
 };
@@ -100,7 +100,7 @@ const displayPlants = (plants) => {
     const plantDiv = document.createElement("div");
 
     plantDiv.innerHTML = `
-    <div  class="card w-80 bg-base-100 shadow-xl  rounded-xl">
+    <div  class="card w-80 bg-base-100 shadow-xl  rounded-xl">
   <figure>
     <img
       src=${plant.image}
@@ -113,7 +113,7 @@ const displayPlants = (plants) => {
       plant.name
     }</h2>
     <p>
-          ${
+          ${
         plant.description
           ? plant.description.slice(0, 100) + "..."
           : "No description available."
