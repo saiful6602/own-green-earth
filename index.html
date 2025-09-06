@@ -12,7 +12,6 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mobile.css" />
   </head>
   <body>
     <header class="bg-green-700 text-white shadow-lg sticky top-0 z-50">
@@ -100,20 +99,20 @@
       <span class="loading loading-dots loading-xl"></span>
     </section>
 
-    <main class="min-h-screen bg-[#F0FDF480] flex my-14">
-  <section id="category-Container" class="bg-[#F0FDF480] w-52"></section>
-  <div class="flex flex-col flex-grow">
-    <section
-      id="plant-Container"
-      class="bg-[#F0FDF480] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4"
-    ></section>
-    <div id="load-more-container" class="w-full text-center mt-6"></div>
-  </div>
-  <section id="cart-section" class="bg-white p-4 rounded-xl shadow-md w-[250px]">
-    <h2 class="text-lg font-bold mb-2">Your Cart</h2>
-    <div id="cart-container"></div>
-  </section>
-</main>
+    <main class="min-h-screen bg-[#F0FDF480] flex flex-col md:flex-row my-14">
+      <section id="category-Container" class="bg-[#F0FDF480] w-full md:w-52 p-4 md:p-0"></section>
+      <div class="flex flex-col flex-grow">
+        <section
+          id="plant-Container"
+          class="bg-[#F0FDF480] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4"
+        ></section>
+        <div id="load-more-container" class="w-full text-center mt-6"></div>
+      </div>
+      <section id="cart-section" class="bg-white p-4 rounded-xl shadow-md w-full md:w-[250px] mt-4 md:mt-0">
+        <h2 class="text-lg font-bold mb-2">Your Cart</h2>
+        <div id="cart-container"></div>
+      </section>
+    </main>
 
     <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
