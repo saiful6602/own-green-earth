@@ -35,7 +35,7 @@
 .hero-content {
   position: relative;
   z-index: 3;
-  width: 627px;
+  max-width: 627px; /* Use max-width instead of fixed width */
   height: 183px;
   display: flex;
   flex-direction: column;
@@ -117,7 +117,7 @@
 
   /* Scale down the hero text and button for smaller screens */
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced font size */
   }
   .hero-content p {
     font-size: 1rem;
