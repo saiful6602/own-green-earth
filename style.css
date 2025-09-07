@@ -72,17 +72,15 @@
 }
 
 @media (max-width: 767px) {
-  /* Hide the desktop nav bar and show the mobile search button */
   .nav-link {
     display: none;
   }
 
-  /* Adjust the main container for smaller screens */
   .main {
     flex-direction: column;
   }
 
-  /* Make the side sections full width on mobile */
+
   #category-Container {
     width: 100%;
     padding: 0 1rem;
@@ -102,22 +100,20 @@
     padding: 1rem;
   }
 
-  /* Adjust card width */
+
   .card {
     width: 100%;
     margin-bottom: 1rem;
   }
 
-  /* Adjust the hero section for mobile */
   .hero-section {
     min-height: 300px;
     width: 100%;
     background-size: cover;
   }
 
-  /* Scale down the hero text and button for smaller screens */
   .hero-content h1 {
-    font-size: 2rem; /* Reduced font size */
+    font-size: 2rem; 
   }
   .hero-content p {
     font-size: 1rem;
@@ -126,12 +122,10 @@
     padding: 0.75rem 1.5rem;
   }
 
-  /* Position the leaf images differently or hide them on mobile */
   .hero-leaf {
     display: none;
   }
 
-  /* Style the active category button for mobile */
   .lesson.active {
     background-color: #15803d;
     color: white;
