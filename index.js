@@ -1,7 +1,7 @@
 const appState = {
   allPlants: [],  
   categories: [], 
-  cart: [],       
+  cart: [],        
 };
 const manageUI = (showSpinner) => {
   const spinner = document.getElementById("spinner");
@@ -30,17 +30,26 @@ const fetchData = async (url) => {
 const displayCategories = (categories) => {
   const categoryContainer = document.getElementById("category-Container");
   categoryContainer.innerHTML = ""; 
+  const allTreesButtonDiv = document.createElement('div');
+  allTreesButtonDiv.innerHTML = `
+    <button
+      id="lesson-btn-all"
+      onclick="loadPlantsByCategory('all')"
+      class="btn w-[200px] hover:bg-green-600 border-none my-1 bg-green-50 hover:text-white lesson active">
+      All Trees
+    </button>`;
+  categoryContainer.appendChild(allTreesButtonDiv.firstElementChild);
 
   categories.forEach((category) => {
     const buttonDiv = document.createElement('div');
     buttonDiv.innerHTML = `
-      <button 
-        id="lesson-btn-${category.id}" 
-        onclick="loadPlantsByCategory(${category.id})" 
-        class="btn w-[200px] hover:bg-green-600 border-none my-1 bg-[#F0FDF480] hover:text-white lesson">
+      <button
+        id="lesson-btn-${category.id}"
+        onclick="loadPlantsByCategory(${category.id})"
+        class="btn w-[200px] hover:bg-green-600 border-none my-1 bg-green-50 hover:text-white lesson">
         ${category.category_name}
       </button>`;
-    
+
     categoryContainer.appendChild(buttonDiv.firstElementChild);
   });
 };
@@ -71,6 +80,7 @@ const displayPlants = (plants) => {
     plantsContainer.appendChild(plantCard.firstElementChild);
   });
 };
+
 const displayPlantDetails = (plant) => {
   const modalContent = document.getElementById("details-container");
   modalContent.innerHTML = `
@@ -82,6 +92,7 @@ const displayPlantDetails = (plant) => {
   `;
   document.getElementById("plant_modal").showModal();
 };
+
 const displayCart = () => {
   const cartContainer = document.getElementById("cart-container");
   cartContainer.innerHTML = ""; 
@@ -102,7 +113,7 @@ const displayCart = () => {
     `;
     cartContainer.appendChild(itemDiv);
   });
-  
+
   const totalDiv = document.createElement("div");
   totalDiv.classList.add("cart-total");
   totalDiv.innerHTML = `<div class="font-bold text-right mt-4">Total: ৳${total}</div>`;
@@ -110,11 +121,15 @@ const displayCart = () => {
 };
 const loadPlantsByCategory = (categoryId) => {
   manageUI(true); 
-  
-  const categoryName = appState.categories.find(cat => String(cat.id) === String(categoryId))?.category_name;
-  
-  const filteredPlants = categoryName ? appState.allPlants.filter(plant => plant.category === categoryName) : appState.allPlants;
-  
+
+  let filteredPlants;
+  if (categoryId === 'all') {
+    filteredPlants = appState.allPlants;
+  } else {
+    const categoryName = appState.categories.find(cat => String(cat.id) === String(categoryId))?.category_name;
+    filteredPlants = categoryName ? appState.allPlants.filter(plant => plant.category === categoryName) : appState.allPlants;
+  }
+
   document.querySelectorAll(".lesson").forEach(btn => btn.classList.remove("active"));
   const clickedBtn = document.getElementById(`lesson-btn-${categoryId}`);
   if (clickedBtn) {
@@ -160,7 +175,7 @@ const initializeApp = async () => {
     displayCategories(appState.categories);
   }
 
-  manageUI(false); 
+  manageUI(false);
 };
 
 initializeApp();
